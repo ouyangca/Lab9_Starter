@@ -7,6 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
 
+  <!-- The Global Error handler and 3rd Party Tracking -->
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "8762e3365f9d46978ea5b68f03316e51"
+    });
+  </script>
+                        
+
   <style>
     button {
       margin: 3px;
@@ -98,10 +107,106 @@
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
 
+    // array of button elements
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
-    // Start your code here
-    // You may move this JS to another file if you wish
+    
+    errorBtns[0].addEventListener('click',function(){
+      console.log("console.log message");
+    });
+
+    errorBtns[1].addEventListener('click',function(){
+      console.error("console.error error message");
+    });
+
+    errorBtns[2].addEventListener('click', function(){
+      console.count("console.count num of calls");
+    });
+    
+    errorBtns[3].addEventListener('click',function(){
+      console.warn("console.warn warning message");
+    });
+
+    errorBtns[4].addEventListener('click',function(){
+      let x = 5;
+      let y = 5;
+      console.assert(x + y == 11, "console.assert return 'false'");
+    });
+
+    errorBtns[5].addEventListener('click',function(){
+      console.clear();
+    });
+
+    errorBtns[6].addEventListener('click',function(){
+      let person =  {
+        name: "Yaya",
+        age: 18,
+        job: "Retired Basketball Player"
+        }
+      console.dir(person);
+    });
+
+    errorBtns[7].addEventListener('click',function(){
+      let person =  {
+        name: "Yaya",
+        age: 18,
+        job: "Retired Basketball Player"
+        }
+      console.dirxml(person);
+    });
+
+    errorBtns[8].addEventListener('click', function () {
+      console.group();
+      console.log("console.log message inside console.group");
+    });
+
+    errorBtns[9].addEventListener('click', function () {
+      console.groupEnd();
+      console.log("console.log after console.groupEnd");
+    });
+
+    errorBtns[10].addEventListener('click', function () {
+      let person =  [
+        {
+        name: "Powell",
+        age: 58,
+        job: "Retired Basketball Player"
+        },
+        {
+        name: "Jessie",
+        age: 20,
+        job: "Retired Football Player"
+        }
+      ]
+      console.table(person);
+    });
+
+    errorBtns[11].addEventListener('click', function () {
+      // start timer
+      console.time();
+    });
+
+    errorBtns[12].addEventListener('click', function () {
+      // end timer
+      console.timeEnd();
+    });
+
+    errorBtns[13].addEventListener('click', function () {
+      otherFunction();
+    });
+
+    function otherFunction() {
+      console.trace();
+    }
+
+    // TODO global error handling
+    errorBtns[14].addEventListener('click', function () {
+      // end timer
+      console.timeEnd();
+    });
+
+  
+
   </script>
 </body>
 
