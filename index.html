@@ -104,7 +104,25 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+
+      // Trying Try/Catch and Custom Error for catching invalid inputs
+      class ValidationError extends Error {
+        constructor(message) {
+          super(message); // 
+          this.name = "ValidationError"; // 
+        }
+      }
+      try {
+        if (isNaN(firstNum) || isNaN(secondNum)) {
+          throw new ValidationError('Please enter valid numbers');
+        }
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (error) {
+        alert(err.message); 
+        alert(err.name); // ValidationError
+      } finally {
+        console.log('user input processed' + firstNum + ' and ' + secondNum);
+      }
     });
 
     // array of button elements
@@ -201,9 +219,14 @@
 
     // TODO global error handling
     errorBtns[14].addEventListener('click', function () {
-      // end timer
-      console.timeEnd();
+      try {
+        nonExistentFunction();
+      } catch (error) {
+        console.error(error);
+      }     
     });
+
+    TrackJS.track('Testing TrackJS!');
 
   
 
