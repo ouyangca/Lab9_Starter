@@ -118,10 +118,10 @@
         }
         output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       } catch (error) {
-        alert(err.message); 
-        alert(err.name); // ValidationError
+        alert(error.message); 
+        alert(error.name); // ValidationError
       } finally {
-        console.log('user input processed' + firstNum + ' and ' + secondNum);
+        console.log('user input processed ' + firstNum + ' and ' + secondNum);
       }
     });
 
@@ -219,14 +219,23 @@
 
     // TODO global error handling
     errorBtns[14].addEventListener('click', function () {
-      try {
-        nonExistentFunction();
-      } catch (error) {
-        console.error(error);
-      }     
+
+      
+
+      badCode();
+      function badCode()
+      {
+        alert('Good code running when suddenly...');
+        abooM('bad code!'); /* BAD CODE ON PURPOSE */ 
+      } 
+
     });
 
+    // 3rd Party Tracking
     TrackJS.track('Testing TrackJS!');
+    // window.onerror = function(message, source, lineno, colno, error) {
+    //     console.error('An error occurred:', message);
+    //   };
 
   
 
